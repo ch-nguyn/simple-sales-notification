@@ -1,0 +1,150 @@
+@import '~@shopify/polaris/build/esm/styles.css';
+:root {
+  --avada-icon-navigation: #6d7175;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  cursor: pointer;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1490196078);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:hover {
+  background-color: #c1c1c1;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.Avada-ScrollBar--isSubdued ::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.Avada-ScrollBar--isSubdued ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.0509803922);
+}
+
+:root {
+  --sheet--width: 38rem;
+}
+
+@media (min-width: 48.0625em) {
+  .Polaris-Sheet__Container {
+    width: var(--sheet--width, "38rem");
+  }
+  .Polaris-Sheet__Container .Polaris-Sheet {
+    width: var(--sheet--width, "38rem");
+  }
+}
+.Polaris-Sheet__Container ~ .Polaris-Backdrop--transparent {
+  background-color: var(--p-backdrop);
+}
+
+.Avada-Sheet__Wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.Avada-Sheet__Wrapper .Avada-Sheet__Header, .Avada-Sheet__Wrapper .Avada-Sheet__Footer {
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+.Avada-Sheet__Wrapper .Avada-Sheet__Header {
+  border-bottom: 1px solid #DFE3E8;
+  justify-content: space-between;
+  height: 5.6rem;
+  padding: 1.6rem 2rem;
+}
+.Avada-Sheet__Wrapper .Avada-Sheet__Header > .Polaris-Stack {
+  width: 100%;
+}
+.Avada-Sheet__Wrapper .Avada-Sheet__Footer {
+  border-top: 1px solid #DFE3E8;
+  justify-content: end;
+  height: 7rem;
+  padding: 1.4rem 2rem;
+}
+.Avada-Sheet__Wrapper .Avada-Sheet__Body {
+  height: 100%;
+}
+.Avada-Sheet__Wrapper .Avada-Sheet__Body.Avada-Sheet__BodySection {
+  padding: 1.6rem;
+}
+.Avada-Sheet__Wrapper .Avada-Sheet__Body.Avada-Sheet__BodyDarkBackground {
+  background-color: #f6f6f7;
+}
+.Avada-Sheet__Wrapper .Avada-Sheet__Body > .Polaris-Card {
+  min-height: 100%;
+  border-radius: 0;
+}
+
+.Avada-Sheet__AppNews .prose {
+  word-break: break-word;
+}
+.Avada-Sheet__AppNews .prose img, .Avada-Sheet__AppNews .prose video, .Avada-Sheet__AppNews .prose iframe {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: block;
+  vertical-align: middle;
+}
+.Avada-Sheet__AppNews .prose p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.Avada-Sheet__AppNews .prose p:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+.Avada-Sheet__AppNews .prose h2 {
+  font-size: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  line-height: 1.3333333;
+  color: #171717;
+  font-weight: 700;
+}
+.Avada-Sheet__AppNews .prose a, .Avada-Sheet__AppNews .prose a code, .Avada-Sheet__AppNews .prose a:hover {
+  color: #264a99;
+}
+.Avada-Sheet__AppNews .prose ol, .Avada-Sheet__AppNews .prose ul {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.Avada-Sheet__AppNews .prose h2 + *, .Avada-Sheet__AppNews .prose h3 + *, .Avada-Sheet__AppNews .prose h4 + *, .Avada-Sheet__AppNews .prose hr + * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+body[data-lock-scrolling] {
+  overflow: auto hidden;
+}
+
+.Avada-Frame {
+  display: flex;
+  height: calc(100vh - 5.6rem);
+}
+
+.Polaris-Header-Title__TitleWithMetadataWrapper {
+  display: flex;
+  align-items: center;
+}
+.Polaris-Header-Title__TitleWithMetadataWrapper .Polaris-Header-Title__TitleMetadata {
+  margin-top: 0;
+}
+
+.Polaris-Modal-Dialog__Container .Polaris-Modal-Header {
+  align-items: center;
+}
+.Polaris-Modal-Dialog__Container .Polaris-Modal-Header .Polaris-Modal-CloseButton {
+  margin-left: 1rem;
+}/*# sourceMappingURL=app.css.map */

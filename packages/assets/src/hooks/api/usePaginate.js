@@ -11,7 +11,7 @@ import useFetchApi from '@assets/hooks/api/useFetchApi';
  * @param defaultSort
  * @param searchKey
  * @param initQueries
- * @returns {{pageInfo: {hasPre, hasNext}, data, setData, count, setCount, fetchApi, loading, fetched, prevPage, nextPage, onQueryChange, onQueriesChange}}
+ * @returns {{pageInfo: {hasPrevious, hasNext}, data, setData, count, setCount, fetchApi, loading, fetched, prevPage, nextPage, onQueryChange, onQueriesChange}}
  */
 export default function usePaginate({
   url,
@@ -19,8 +19,8 @@ export default function usePaginate({
   initLoad = true,
   keepPreviousData = false,
   presentData = null,
-  defaultLimit = 20,
-  defaultSort = 'createdAt:asc',
+  defaultLimit = 10,
+  defaultSort = 'timestamp:desc',
   searchKey = 'searchKey',
   initQueries = {}
 }) {

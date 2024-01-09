@@ -1,0 +1,10 @@
+.Avada-Slider__Suffix--container {
+  border: 1px solid rgb(209, 209, 209);
+  border-radius: 4px;
+  padding: 8px 12px;
+  min-width: 112px;
+}
+.Avada-Slider__Suffix--container .Avada-Slider__Suffix--content {
+  color: gray;
+  margin-left: 12px;
+}/*# sourceMappingURL=Slider.css.map */

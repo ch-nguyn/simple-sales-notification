@@ -1,2 +1,30 @@
-# This file stores configurations for your Shopify app.
-scopes = ""
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "Simple Sales Notfication"
+client_id = "b6a7b3d8a7be883908c1cd64131669c2"
+application_url = "https://murder-finishing-ftp-virgin.trycloudflare.com/auth/shopify"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+use_legacy_install_flow = true
+
+[auth]
+redirect_urls = [
+  "https://murder-finishing-ftp-virgin.trycloudflare.com/auth/shopify/callback",
+  "https://murder-finishing-ftp-virgin.trycloudflare.com/authSa/shopify/callback",
+  "https://murder-finishing-ftp-virgin.trycloudflare.com/auth/shopify/embed/callback",
+  "https://localhost:3000/auth/shopify/callback",
+  "https://localhost:3000/authSa/shopify/callback",
+  "https://localhost:3000/auth/shopify/embed/callback"
+]
+
+[webhooks]
+api_version = "2023-10"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "quickstart-2a781c26.myshopify.com"

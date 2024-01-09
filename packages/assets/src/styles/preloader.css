@@ -1,0 +1,14 @@
+.Avada-Frame__Content {
+  background-color: white;
+}
+.Avada-Frame__Content .PreLoading-Spinner {
+  left: 6.8rem;
+  position: absolute;
+  z-index: 1;
+}
+.Avada-Frame__Content .PreLoading-Spinner + * .Avada-Footer_Container {
+  display: none;
+}
+.Avada-Frame__Content.Avada-Frame__Content--isExpanded .PreLoading-Spinner {
+  left: 24rem;
+}/*# sourceMappingURL=preloader.css.map */

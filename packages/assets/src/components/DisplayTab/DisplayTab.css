@@ -1,0 +1,7 @@
+.Avada-DisplayTab__Slider--container {
+  display: flex;
+  gap: 20px;
+}
+.Avada-DisplayTab__Slider--container .Avada-DisplayTab__Slider--children {
+  flex-basis: 50%;
+}/*# sourceMappingURL=DisplayTab.css.map */

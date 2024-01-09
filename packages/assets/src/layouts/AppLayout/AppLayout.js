@@ -41,9 +41,7 @@ export default function AppLayout({children}) {
         </div>
         <Scrollable className={contentClass.join(' ')}>
           {children}
-          <Layout>
-            <Footer />
-          </Layout>
+          <Layout>{/* <Footer /> */}</Layout>
         </Scrollable>
       </div>
       {loading && <Loading />}
