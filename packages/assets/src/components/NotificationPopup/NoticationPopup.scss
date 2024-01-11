@@ -5,6 +5,12 @@
   color: #333;
 }
 
+.truncate {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .Avava-SP__Wrapper .Avava-SP__LinkWrapper {
   color: #333;
 }

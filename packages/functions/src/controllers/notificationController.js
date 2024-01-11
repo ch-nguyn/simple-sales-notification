@@ -30,7 +30,7 @@ export const getNotifications = async ctx => {
 export const removeNotifications = async ctx => {
   try {
     const {data} = ctx.req.body;
-    removeList(data);
+    await removeList(data);
     ctx.status = 204;
     ctx.body = {
       success: true

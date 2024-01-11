@@ -8,9 +8,9 @@ const NotificationPopup = ({
   firstName = 'Someone',
   city = 'Decatur',
   country = 'USA',
-  productName = 'Puffer Jacket',
+  productName = 'The Collection Snowboard: Hydrogen',
   relativeTime = 'a day ago',
-  productImage = 'http://paris.mageplaza.com/images/shop/single/big-1.jpg',
+  productImage = 'https://cdn.shopify.com/s/files/1/0703/3883/8562/products/Main_0a40b01b-5021-48c1-80d1-aa8ab4876d3d.jpg?v=1703474695',
   hideTimeAgo = false,
   truncateProductName = true,
   hasClose = true
@@ -33,8 +33,8 @@ const NotificationPopup = ({
               <div className={'Avada-SP__Title'}>
                 {firstName} in {city}, {country}
               </div>
-              <div className={'Avada-SP__Subtitle'}>
-                Purchased {truncateProductName ? `${productName.slice(0, 10)}...` : productName}
+              <div className={`Avada-SP__Subtitle ${truncateProductName && 'truncate'}`}>
+                Purchased {productName}
               </div>
               <div className={'Avada-SP__Footer'}>
                 <p>{hideTimeAgo || relativeTime}</p>

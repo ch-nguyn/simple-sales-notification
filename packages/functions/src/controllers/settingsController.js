@@ -25,7 +25,7 @@ export const getSettings = async ctx => {
 export const updateSettings = async ctx => {
   try {
     const {data} = ctx.req.body;
-    updateShopSettings(data.id, data);
+    await updateShopSettings(data.id, data);
 
     ctx.status = 200;
     ctx.body = {

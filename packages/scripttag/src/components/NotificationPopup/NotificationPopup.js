@@ -41,9 +41,9 @@ const NotificationPopup = ({
               <div className={'Avada-SP__Title'}>
                 {firstName} in {city}, {country}
               </div>
-              <div className={'Avada-SP__Subtitle'}>
-                Purchased {truncateProductName ? `${productName.slice(0, 10)}...` : productName}
-              </div>
+              <p className={`Avada-SP__Subtitle ${truncateProductName && 'truncate'}`}>
+                Purchased {productName}
+              </p>
               <div className={'Avada-SP__Footer'}>
                 {timeAgo}
                 <span className="uni-blue">by Avada</span>

@@ -12,7 +12,7 @@ export const listenNewOrder = async ctx => {
     const product = await shopify.product.get(lineItems[0].product_id);
     const productImage = product.image.src;
 
-    addNotification({
+    await addNotification({
       city,
       country,
       firstName: first_name,

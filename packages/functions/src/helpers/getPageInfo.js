@@ -1,14 +1,17 @@
-const getPageInfo = (page, totalPage) => {
-  let hasNext = true;
-  let hasPrevious = true;
+/**
+ *
+ * @param {doc} ref
+ * @param {number} limit
+ * @param {number} page
+ * @returns {{hasNext: boolean, hasPrevious:boolean}}
+ */
+const getPageInfo = async (ref, limit, page) => {
+  const snapshot = await ref.count().get();
+  const totalData = snapshot.data().count;
+  const totalPage = Math.ceil(totalData / limit);
 
-  if (page === 1) {
-    hasPrevious = false;
-  }
-
-  if (page === totalPage) {
-    hasNext = false;
-  }
+  const hasNext = page !== totalPage;
+  const hasPrevious = page !== 1;
 
   return {
     hasNext,

@@ -13,6 +13,11 @@ export default function Notifications() {
   const [selectedItems, setSelectedItems] = useState([]);
   const [sortValue, setSortValue] = useState('timestamp:desc');
   const {data: settings} = useFetchApi({url: '/settings'});
+
+  const initQueries = {
+    sort: sortValue
+  };
+
   const {
     data: notifications,
     loading,
@@ -22,7 +27,8 @@ export default function Notifications() {
     prevPage,
     onQueryChange
   } = usePaginate({
-    url: `/notifications`
+    url: `/notifications`,
+    initQueries
   });
   const {handleDelete} = useDeleteApi({url: '/notifications'});
   const {hasNext, hasPrevious} = pageInfo;

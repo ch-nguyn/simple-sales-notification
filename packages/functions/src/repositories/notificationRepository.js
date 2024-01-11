@@ -1,6 +1,5 @@
 import {Firestore} from '@google-cloud/firestore';
 import {prepareDoc} from '../helpers/prepareDoc';
-import getTotalPage from '../helpers/getTotalPage';
 import getPageInfo from '../helpers/getPageInfo';
 
 const firestore = new Firestore();
@@ -24,8 +23,7 @@ export const getList = async ({id, page = 1, limit = 10, sort = 'timestamp:desc'
     .limit(limitNumber)
     .get();
 
-  const totalPage = await getTotalPage({ref: notiRef, limit: limitNumber, id});
-  const pageInfo = getPageInfo(pageNumber, totalPage);
+  const pageInfo = await getPageInfo(notiRef, limitNumber, pageNumber);
 
   return {
     data: snapshot.docs.map(doc => prepareDoc(doc)),
@@ -33,15 +31,21 @@ export const getList = async ({id, page = 1, limit = 10, sort = 'timestamp:desc'
   };
 };
 
-export const addNotification = async noti => {
-  await notiRef.add(noti);
+/**
+ *
+ * @param {object} noti
+ * @returns {Promise}
+ */
+export const addNotification = noti => {
+  return notiRef.add(noti);
 };
 
 /**
  *
  * @param {string[]} ids
+ * @returns {Promise}
  */
-export const removeList = async (ids = []) => {
+export const removeList = (ids = []) => {
   const jobs = ids.map(id => notiRef.doc(id).delete());
-  await Promise.all(jobs);
+  return Promise.all(jobs);
 };

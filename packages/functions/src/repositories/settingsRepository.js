@@ -22,10 +22,10 @@ export const getShopSettings = async id => {
  * @param {string} id
  * @param data
  */
-export const updateShopSettings = async (id, data) => {
-  await settingsRef.doc(id).update(data);
+export const updateShopSettings = (id, data) => {
+  return settingsRef.doc(id).update(data);
 };
 
-export const addShopSettings = async data => {
-  await settingsRef.add(data);
+export const addShopSettings = data => {
+  return settingsRef.add(data);
 };

@@ -1,28 +1,16 @@
 import {addNotification} from '../repositories/notificationRepository';
 import queryOrdersGraphql from '../const/queryOrdersGraphql';
+import prepareNoti from '../helpers/prepareNoti';
 
 const orderSynchronizationService = async ({shopify, shop, shopifyDomain}) => {
-  try {
-    const resp = await shopify.graphql(queryOrdersGraphql);
-    const orders = resp.orders.edges;
+  const resp = await shopify.graphql(queryOrdersGraphql);
+  const orders = resp.orders.edges;
 
-    orders.forEach(order => {
-      const {billingAddress, lineItems} = order.node;
-      addNotification({
-        city: billingAddress.city,
-        country: billingAddress.country,
-        firstName: billingAddress.firstName,
-        productId: lineItems.edges[0].node.product.id,
-        productImage: lineItems.edges[0].node.image.src,
-        productName: lineItems.edges[0].node.title,
-        shopId: shop.id,
-        shopifyDomain: shopifyDomain,
-        timestamp: order.node.createdAt
-      });
-    });
-  } catch (e) {
-    console.error(e);
-  }
+  const promiseOrder = orders.map(order => {
+    return addNotification({...prepareNoti(order), shopId: shop.id, shopifyDomain});
+  });
+
+  return promiseOrder;
 };
 
 export default orderSynchronizationService;

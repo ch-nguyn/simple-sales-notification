@@ -5,7 +5,7 @@ export const apiPrefix = {
 
 export const getApiPrefix = isEmbedApp => (isEmbedApp ? apiPrefix.embed : apiPrefix.standalone);
 
-export const domain = 'https://53f1-171-224-179-158.ngrok-free.app';
+export const domain = 'https://ce6c-171-224-179-158.ngrok-free.app';
 
 export const defaultSettings = {
   position: 'bottom-left',

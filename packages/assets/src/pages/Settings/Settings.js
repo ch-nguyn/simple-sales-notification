@@ -66,7 +66,6 @@ export default function Settings() {
           <NotificationPopup
             truncateProductName={settings.truncateProductName}
             hideTimeAgo={settings.hideTimeAgo}
-            productImage="https://suprema.qodeinteractive.com/wp-content/uploads/2016/02/shop-standard-3-550x550.jpg"
           />
         </Layout.Section>
         <Layout.Section>

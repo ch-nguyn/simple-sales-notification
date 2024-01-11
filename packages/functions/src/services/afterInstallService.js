@@ -5,6 +5,10 @@ import syncOrder from './orderSynchronizationService';
 import {addShopSettings} from '../repositories/settingsRepository';
 import {defaultSettings} from '../const/app';
 
+/**
+ *
+ * @param ctx
+ */
 const afterInstall = async ctx => {
   try {
     const shopifyDomain = ctx.state.shopify.shop;
