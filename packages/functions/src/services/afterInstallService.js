@@ -23,6 +23,10 @@ const afterInstall = async ctx => {
       accessToken: shop.accessToken
     });
 
+    // const webhooks = await shopify.webhook.list();
+    // const jobs = webhooks.map(webhook => shopify.webhook.delete(webhook.id));
+    // await Promise.all(jobs);
+
     await Promise.all([
       createWebhook(shopify),
       syncOrder({shopify, shop, shopifyDomain}),

@@ -24,10 +24,11 @@ export const listenNewOrder = async ctx => {
       timestamp: new Date(created_at).toISOString()
     });
 
-    ctx.status = 201;
+    ctx.status = 200;
     ctx.body = {
       success: true
     };
+    return true;
   } catch (e) {
     ctx.status = 404;
     ctx.body = {
