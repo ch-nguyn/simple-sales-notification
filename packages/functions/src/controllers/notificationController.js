@@ -31,10 +31,10 @@ export const removeNotifications = async ctx => {
   try {
     const {data} = ctx.req.body;
     await removeList(data);
-    ctx.status = 204;
-    ctx.body = {
+    ctx.status = 200;
+    return (ctx.body = {
       success: true
-    };
+    });
   } catch (e) {
     ctx.status = 404;
     ctx.body = {

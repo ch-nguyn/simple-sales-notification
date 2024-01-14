@@ -13,11 +13,6 @@ export default function Notifications() {
   const [selectedItems, setSelectedItems] = useState([]);
   const [sortValue, setSortValue] = useState('timestamp:desc');
   const {data: settings} = useFetchApi({url: '/settings'});
-
-  const initQueries = {
-    sort: sortValue
-  };
-
   const {
     data: notifications,
     loading,
@@ -27,10 +22,9 @@ export default function Notifications() {
     prevPage,
     onQueryChange
   } = usePaginate({
-    url: `/notifications`,
-    initQueries
+    url: `/notifications`
   });
-  const {handleDelete} = useDeleteApi({url: '/notifications'});
+  const {handleDelete, deleting} = useDeleteApi({url: '/notifications'});
   const {hasNext, hasPrevious} = pageInfo;
 
   const resourceName = {
@@ -47,9 +41,11 @@ export default function Notifications() {
     {
       content: 'Delete',
       onAction: async () => {
-        await handleDelete(selectedItems);
-        await getNotifications();
-        setSelectedItems(prev => []);
+        const res = await handleDelete(selectedItems);
+        if (res) {
+          await getNotifications('/notifications', {sort: sortValue});
+          setSelectedItems(prev => []);
+        }
       }
     }
   ];
@@ -65,7 +61,7 @@ export default function Notifications() {
           <Card>
             <ResourceList
               promotedBulkActions={promotedBulkActions}
-              loading={loading}
+              loading={loading || deleting}
               selectable
               sortOptions={sortOptions}
               selectedItems={selectedItems}

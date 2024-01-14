@@ -8,6 +8,14 @@
 const getPageInfo = async (ref, limit, page) => {
   const snapshot = await ref.count().get();
   const totalData = snapshot.data().count;
+
+  if (totalData === 0) {
+    return {
+      hasNext: false,
+      hasPrevious: false
+    };
+  }
+
   const totalPage = Math.ceil(totalData / limit);
 
   const hasNext = page !== totalPage;

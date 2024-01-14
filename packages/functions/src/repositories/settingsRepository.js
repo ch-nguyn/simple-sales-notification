@@ -26,6 +26,11 @@ export const updateShopSettings = (id, data) => {
   return settingsRef.doc(id).update(data);
 };
 
+/**
+ *
+ * @param {object} data
+ * @returns {Promise}
+ */
 export const addShopSettings = data => {
   return settingsRef.add(data);
 };

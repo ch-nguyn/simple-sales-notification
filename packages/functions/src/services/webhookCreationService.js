@@ -7,7 +7,10 @@ import {domain} from '../const/app';
  * @returns {Promise<Array>}
  */
 const webhookCreationService = async shopify => {
-  // Create Webhook
+  const webhooks = await shopify.webhook.list();
+  const jobs = webhooks.map(webhook => shopify.webhook.delete(webhook.id));
+  await Promise.all(jobs);
+
   const webhookData = {
     topic: 'orders/create',
     address: `${domain}/webhook/order/new`,

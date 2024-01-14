@@ -1,35 +1,42 @@
+import {getProductImage} from '../helpers/getProductImage';
 import initShopify from '../helpers/initShopify';
-import {addNotification} from '../repositories/notificationRepository';
+import {addNotification, getNotiByOrderId} from '../repositories/notificationRepository';
 
 export const listenNewOrder = async ctx => {
   try {
-    const {billing_address: billingAddress, line_items: lineItems, created_at} = ctx.req.body;
-    const {city, country, first_name} = billingAddress;
-    const {product_id, name} = lineItems[0];
+    const {billing_address: billingAddress, line_items: lineItems, created_at, id} = ctx.req.body;
+    const [shopifyObj, notification] = await Promise.all([initShopify(ctx), getNotiByOrderId(id)]);
 
-    const {shopify, shopDomain, shop} = await initShopify(ctx);
+    const {shopify, shopDomain, shop} = shopifyObj;
 
-    const product = await shopify.product.get(lineItems[0].product_id);
-    const productImage = product.image.src;
+    const productImage = await getProductImage(shopify, lineItems);
+
+    if (notification) {
+      ctx.status = 200;
+      return (ctx.body = {
+        success: true
+      });
+    }
 
     await addNotification({
-      city,
-      country,
-      firstName: first_name,
-      productId: product_id,
+      city: billingAddress.city,
+      country: billingAddress.country,
+      firstName: billingAddress.first_name,
+      productId: lineItems[0].product_id,
       productImage,
-      productName: name,
+      productName: lineItems[0].name,
       shopId: shop.id,
       shopifyDomain: shopDomain,
-      timestamp: new Date(created_at).toISOString()
+      timestamp: new Date(created_at).toISOString(),
+      orderId: id
     });
 
     ctx.status = 200;
-    ctx.body = {
+    return (ctx.body = {
       success: true
-    };
-    return true;
+    });
   } catch (e) {
+    console.log(e);
     ctx.status = 404;
     ctx.body = {
       message: e.message

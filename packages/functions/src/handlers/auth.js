@@ -7,7 +7,7 @@ import path from 'path';
 import createErrorHandler from '@functions/middleware/errorHandler';
 import firebase from 'firebase-admin';
 import appConfig from '@functions/config/app';
-import afterInstall from '../services/afterInstallService';
+import afterInstall from '../services/installationService';
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp();
@@ -49,8 +49,8 @@ app.use(
       return (ctx.body = {
         success: true
       });
-    },
-    afterInstall
+    }
+    // afterLogin: afterInstall
   }).routes()
 );
 

@@ -33,6 +33,17 @@ export const getList = async ({id, page = 1, limit = 10, sort = 'timestamp:desc'
 
 /**
  *
+ * @param {number} id
+ * @returns
+ */
+export const getNotiByOrderId = async id => {
+  const doc = await notiRef.where('orderId', '==', id).get();
+  const [notification] = doc.docs;
+  return notification;
+};
+
+/**
+ *
  * @param {object} noti
  * @returns {Promise}
  */

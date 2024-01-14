@@ -16,15 +16,17 @@ export const getShopData = async ctx => {
       throw new Error('Wrong shopifyDomain');
     }
 
-    const settings = await getShopSettings(shop.id);
-    const {data: notifications} = await getList({id: shop.id, limit: settings.maxPopsDisplay});
+    const [settings, noti] = await Promise.all([
+      getShopSettings(shop.id),
+      getList({id: shop.id, limit: 80})
+    ]);
 
     ctx.status = 200;
     return (ctx.body = {
       success: true,
       data: {
         settings,
-        notifications
+        notifications: noti.data
       }
     });
   } catch (e) {

@@ -2,6 +2,7 @@ const queryOrdersGraphql = `{
     orders (first:30,sortKey:CREATED_AT,reverse:true){
       edges {
         node {
+          id
           createdAt
           billingAddress{
             firstName

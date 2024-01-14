@@ -21,10 +21,9 @@ export default class DisplayManager {
     if (isNotAllowed) return;
 
     const notificationsShow = notifications.slice(0, maxPopsDisplay);
-
     await delay(firstDelay);
-    for (let i = 0; i < notificationsShow.length; i++) {
-      await this.display({notification: notificationsShow[i], settings});
+    for (const notification of notificationsShow) {
+      await this.display({notification, settings});
       await delay(displayDuration);
       this.fadeOut();
       await delay(popsInterval);
